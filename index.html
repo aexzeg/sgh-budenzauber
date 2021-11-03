@@ -1,12 +1,485 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<title>Page Title</title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/@mdi/font@4.x/css/materialdesignicons.min.css" rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, minimal-ui">
+  <!--favicons-->
+  <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./favicon-16x16.png">
+  <link rel="manifest" href="./site.webmanifest">
+  <meta name="msapplication-TileColor" content="#da532c">
+  <meta name="theme-color" content="#ffffff">
+  <!--favicons-->
+  <title>Turniere SG Hausham</title>
 </head>
+
 <body>
+  <div id="app">
+    <v-app>
+      <v-content>
+        <v-container>
+          <v-toolbar>
+            <img class="mr-3" src="./src/sgh_icon.png" height="40" />
+            <v-toolbar-title class="red--text">Turniere SG Hausham 2019</v-toolbar-title>
+          </v-toolbar>
+          <a name="infos"></a>
+          <br>
+          <br>
+          <div>
+            <h2 class="display-1 red--text">
+              <a href="#infos" class="red--text" style="text-decoration: none;">#</a>
+              Informationen
+            </h2>
+            <br>
+            <p class="font-weight-regular subtitle-1">
+              Liebe Sportfreunde, Trainer, Betreuer, Eltern und Spieler,
+              <br>
+              <br>
+              die <a target="_blank" href="http://www.sg-hausham.de/">SG Hausham</a> freut sich, dass ihr alle zu
+              unseren Turnieren in der Hallensaison 2019/2020 kommt und bedankt sich für die Teilnahme.
+              Dieses Mal veranstalten wir Turniere von den F-Junioren bis zu den A-Junioren sowie auch ein Turnier
+              für unsere Herren-Mannschaft.
+              <br>
+              <br>
+              Eine Übersicht der Turniere findet ihr <a href="#termine">hier</a>.
+              <br>
+              <br>
+              Zudem finden bei uns auch die Kreismeisterschaften für E- bis B-Junioren am 11. und 12.Januar 2020 statt.
+              <br>
+              Ein Highlight in diesem Jahr sind die Oberbayerischen Meisterschaften der B-Junioren am 19.Januar 2020.
+              <br>
+              <br>
+              Aufgrund von Baumaßnahmen auf dem Gelände der Anton Weilmaier Schule, Tegernseer Str. 36, gibt es direkt
+              auf dem Gelände keine Parkplätze.
+              Bitte <a href="#anfahrt">die ausgeschriebenen Parkplätze</a> nutzen.
+              <br>
+              <br>
+              Zudem bitten wir euch auf dem Gelände um die Sporthalle NICHT zu rauchen.
+              <br>
+              <br>
+              Vor Ort ist für euer leibliches Wohl zu fairen Preisen gesorgt.
+              <br>
+              <br>
+              Falls es noch Fragen gibt, stehen wir gerne zur Verfügung.
+              <br>
+              <br>
+              <br>
+              Mit sportlichen Grüßen
+              <br>
+              <br>
+              Alexander Zeug
+              <br>
+              Jugendleiter
+              <br>
+              SG Hausham 01
+            </p>
+            <a target="_blank" href="http://www.sg-hausham.de/index.php?id=274">
+              <img src="./src/sgh_icon.png" height="100px">
+            </a>
+            <br>
+            <br>
+          </div>
+          <a name="termine"></a>
+          <br>
+          <v-divider></v-divider>
+          <br>
+          <div>
+            <h2 class="display-1 red--text">
+              <a href="#termine" class="red--text" style="text-decoration: none;">#</a>
+              Termine
+            </h2>
+            <br>
+            <h3>Turniere der SG Hausham</h3>
+            <br>
+            <v-simple-table>
+              <template v-slot:default>
+                <thead>
+                  <tr>
+                    <th class="text-left">Mannschaft</th>
+                    <th class="text-left">Alterklasse</th>
+                    <th class="text-left">Jahrgänge</th>
+                    <th class="text-left">Datum</th>
+                    <th class="text-left">Tag</th>
+                    <th class="text-left">Beginn</th>
+                    <th class="text-left">Ende</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="item in sgh" :key="item.name">
+                    <td>{{ item.jugend }}</td>
+                    <td>{{ item.alter }}</td>
+                    <td>{{ item.jahr }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.day }}</td>
+                    <td>{{ item.start }}</td>
+                    <td>{{ item.end }}</td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
+            <br>
+            <br>
+            <h3>Ausrichtung von Futsal-Hallenmeisterschaften</h3>
+            <br>
+            <v-simple-table>
+              <template v-slot:default>
+                <thead>
+                  <tr>
+                    <th class="text-left">Runde</th>
+                    <th class="text-left">Mannschaft</th>
+                    <th class="text-left">Alterklasse</th>
+                    <th class="text-left">Jahrgänge</th>
+                    <th class="text-left">Datum</th>
+                    <th class="text-left">Tag</th>
+                    <th class="text-left">Beginn</th>
+                    <th class="text-left">Ende</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr v-for="item in bfv" :key="item.name">
+                    <td>{{ item.runde }}</td>
+                    <td>{{ item.jugend }}</td>
+                    <td>{{ item.alter }}</td>
+                    <td>{{ item.jahr }}</td>
+                    <td>{{ item.date }}</td>
+                    <td>{{ item.day }}</td>
+                    <td>{{ item.start }}</td>
+                    <td>{{ item.end }}</td>
+                  </tr>
+                </tbody>
+              </template>
+            </v-simple-table>
+          </div>
+          <a name="anfahrt"></a>
+          <br>
+          <v-divider></v-divider>
+          <br>
+          <div>
+            <h2 class="display-1 red--text">
+              <a href="#anfahrt" class="red--text" style="text-decoration: none;">#</a>
+              Anfahrt
+            </h2>
+            <br>
+            <v-alert color="red">
+              Die Routenbeschreibung über Google Maps kann eventuell falsch sein. Bitte auf die Beschreibung achten!
+            </v-alert>
+            <br>
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1923.7376659786603!2d11.82527666469239!3d47.754183643651466!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x479d8b70e6ea34cd%3A0x6e1fa2daf6899601!2sAnton-Weilmaier-Schule!5e1!3m2!1sde!2sde!4v1574235986318!5m2!1sde!2sde"
+              width="600" height="450" frameborder="0" style="border:0;" allowfullscreen=""></iframe>
+            <br>
+            <div>
+              <div class="title">
+                Adresse für Sporthalle:
+              </div>
+              <div class="subtitle-1">
+                Landkreis Trunhalle
+                <br>
+                Tegernseer Straße 36
+                <br>
+                83734 Hausham
+              </div>
+              <div class="subtitle-1">
+                <br>
+                <div class="title">
+                  Anfahrt aus Richtung Miesbach:
+                </div>
+                <ol>
+                  <li>Zuerst Richtung Ortsmitte Hausham halten</li>
+                  <li>Dann Richtung Tegernsee</li>
+                  <li>Bei der Ampel rechts abbiegen</li>
+                  <li>Nach der Sporthalle nochmals links abbiegen</li>
+                  <li>Etwa 200m bis zum Sportplatz fahren und dort gibt es Parkplätze</li>
+                </ol>
+                <br>
+                <div class="title">
+                  Anfahrt aus Richtung Tegernsee:
+                </div>
+                <ol>
+                  <li>Zuerst Richtung Ortsmitte Hausham halten</li>
+                  <li>Bei der zweiten Ampel nach Ortsbeginn links abbiegen</li>
+                  <li>Nach der Sporthalle nochmals links abbiegen</li>
+                  <li>Etwa 200m bis zum Sportplatz fahren und dort gibt es Parkplätze</li>
+                </ol>
+              </div>
+            </div>
+            <br>
+            <hr>
+            <br>
+            <div>
+              <img src="./src/Anfahrt.png" width="100%" alt="Bild mit gekennzeichneten Parkflächen">
+              <div>
+                <div class="white--text subtitle-1">
+                  <span style="background-color: #0000FF">
+                    Blau ist der Anfahrtsweg aus Richtung Miesbach eingezeichnet
+                  </span>
+                </div>
+                <div class="subtitle-1">
+                  <span style="background-color: #FFFF00">
+                    Gelb ist der Anfahrtsweg aus Richtung Tegernsee/Bad Tölz eingezeichnet
+                  </span>
+                </div>
+                <div class="white--text subtitle-1">
+                  <span style="background-color: #FF0000">
+                    Rot ist der Weg zum Parkplatz und die Parkflächen markiert
+                  </span>
+                </div>
+                <div class="subtitle-1">
+                  <span style="background-color: rgb(0, 255, 0)">
+                    Grün ist der Weg vom Parkplatz zur Sporthalle gekennzeichnet
+                  </span>
+                </div>
+                <br>
+                <p class="subtitle-1">
+                    Bitte um den Sportplatz herumgehen und nicht darüber laufen.
+                </p>
+                <div>
+                  <div class="title">
+                      Adressen der Parkmöglichkeiten:
+                  </div>
+                  <div class="subtitle-1">
+                    <b>1.</b> Nagelbachstrasse 2, 83734 Hausham
+                    <br>
+                    <b>2.</b> Agatharieder Weg 11, 83734 Hausham
+                    <br>
+                    <b>3.</b> Agatharieder Weg 5, 83734 Hausham
+                  </div>
+                </div>
+                <br>
+              </div>
+              <div>
+                <h3>
+                  <a href="./src/Anfahrt_Hausham.pdf">Hier</a> könnt ihr die Beschreibung der Anfahrt euch als PDF herunterladen.
+                </h3>
+              </div>
+            </div>
+          </div>
+          <a name="kontakt"></a>
+          <br>
+          <v-divider></v-divider>
+          <br>
+          <div>
+            <h2 class="display-1 red--text">
+              <a href="#kontakt" class="red--text" style="text-decoration: none;">#</a>
+              Kontakt
+            </h2>
+            <p></p>
+            <v-card class="mx-auto" max-width="344">
+              <v-card-text>
+                <div>Jugendleiter</div>
+                <p class="display-1 text--primary">
+                  Alexander Zeug
+                </p>
+                <div class="text--primary">
+                  <span>
+                    <i class="material-icons">email</i>
+                      Mail:
+                      <v-tooltip bottom>
+                        <template v-slot:activator="{ on }">
+                          <span v-on="on"><a href="mailto:zeugalexander@gmail.com">zeugalexander@gmail.com</a></span>
+                        </template>
+                        <span>
+                            Mail an Alexander Zeug senden
+                        </span>
+                      </v-tooltip>
+                  </span>
+                </div>
+                <div class="text--primary">
+                  <span>
+                    <i class="material-icons">phone_android</i>
+                    Mobil:
+                    <v-tooltip bottom>
+                        <template v-slot:activator="{ on }">
+                          <span v-on="on"><a href="tel:+4915223900811">+49 (0)1522 39 00 811</a></span>
+                        </template>
+                        <span>
+                            Alexander Zeug anrufen
+                        </span>
+                      </v-tooltip>
+                  </span>
+                </div>
+              </v-card-text>
+              <v-card-actions>
+                <v-tooltip bottom>
+                  <template v-slot:activator="{ on }">
+                    <span v-on="on"><a href="./src/AlexanderZeug.vcf"><i class="material-icons">vertical_align_bottom</i></a></span>
+                  </template>
+                  <span>
+                      Kontakt herunterladen
+                  </span>
+                </v-tooltip>
+              </v-card-actions>
+            </v-card>
+            <br>
+          </div>
+        </v-container>
+      </v-content>
+    </v-app>
+  </div>
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.x/dist/vue.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/vuetify@2.x/dist/vuetify.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      vuetify: new Vuetify(),
+      data: () => ({
+        menu: [
+          { icon: 'home', title: 'Link A' },
+          { icon: 'info', title: 'Link B' },
+          { icon: 'warning', title: 'Link C' }
+        ],
+        sgh: [
+          {
+            jugend: 'Herren',
+            alter: 'Herren',
+            jahr: 'Herren',
+            date: '18.01.2020',
+            day: 'Samstag',
+            start: '13:30 Uhr',
+            end: '20:00 Uhr',
+          },/*
+          {
+            jugend: 'A-Junioren',
+            alter: 'U19',
+            jahr: '2001/2002',
+            date: '11.01.2020',
+            day: 'Samstag',
+            start: '17:30 Uhr',
+            end: '21:00 Uhr',
+          },
+          {
+            jugend: 'B-Junioren',
+            alter: 'U17',
+            jahr: '2003/2004',
+            date: '14.12.2019',
+            day: 'Samstag',
+            start: '17:45 Uhr',
+            end: '21:30 Uhr',
+          },
+          {
+            jugend: 'C-Junioren',
+            alter: 'U15',
+            jahr: '2005/2006',
+            date: '14.12.2019',
+            day: 'Samstag',
+            start: '08:30 Uhr',
+            end: '12:45 Uhr',
+          },
+          {
+            jugend: 'D-Junioren',
+            alter: 'U13',
+            jahr: '2007/2008',
+            date: '15.01.2020',
+            day: 'Sonntag',
+            start: '15:45 Uhr',
+            end: '20:00 Uhr',
+          },
+          {
+            jugend: 'E1-Junioren',
+            alter: 'U11',
+            jahr: '2009/2010',
+            date: '14.12.2019',
+            day: 'Samstag',
+            start: '13:15 Uhr',
+            end: '17:30 Uhr',
+          },
+          {
+            jugend: 'E1-Junioren',
+            alter: 'U11',
+            jahr: '2009/2010',
+            date: '15.12.2019',
+            day: 'Sonntag',
+            start: '8:30 Uhr',
+            end: '12:45 Uhr',
+          },*/
+          {
+            jugend: 'E2-Junioren',
+            alter: 'U11',
+            jahr: '2009/2010',
+            date: '18.01.2020',
+            day: 'Samstag',
+            start: '8:30 Uhr',
+            end: '13:00 Uhr',
+          },/*
+          {
+            jugend: 'F1-Junioren',
+            alter: 'U9',
+            jahr: '2011/2012',
+            date: '15.12.2020',
+            day: 'Sonntag',
+            start: '12:15 Uhr',
+            end: '15:15 Uhr',
+          },*/
+        ],
+        bfv: [
+          /*{
+            runde: 'Kreismeisterschaft',
+            jugend: 'B-Junioren',
+            alter: 'U17',
+            jahr: '2003/2004',
+            date: '11./12.01.2020',
+            day: 'Samstag/Sonntag',
+            start: 'unbekannt',
+            end: 'unbekannt',
+          },
+          {
+            runde: 'Kreismeisterschaft',
+            jugend: 'D-Junioren',
+            alter: 'U13',
+            jahr: '2007/2008',
+            date: '11./12.01.2020',
+            day: 'Samstag',
+            start: '13:30 Uhr',
+            end: '17:00 Uhr',
+          },
+          {
+            runde: 'Kreismeisterschaft',
+            jugend: 'C-Junioren',
+            alter: 'U15',
+            jahr: '2005/2006',
+            date: '12.01.2020',
+            day: 'Sonntag',
+            start: '08:30 Uhr',
+            end: '12:00 Uhr',
+          },
+          {
+            runde: 'Kreismeisterschaft',
+            jugend: 'E-Junioren',
+            alter: 'U11',
+            jahr: '2009/2010',
+            date: '12.01.2020',
+            day: 'Sonntag',
+            start: '12:15 Uhr',
+            end: '17:00 Uhr',
+          },*/
+          {
+            runde: 'Oberbayerische Meisterschaft',
+            jugend: 'B-Junioren',
+            alter: 'U17',
+            jahr: '2005/2006',
+            date: '19.01.2020',
+            day: 'Sonntag',
+            start: '10:00 Uhr',
+            end: '18:00 Uhr',
+          }
+        ]
+      }),
+      methods: {
 
+      }
+    });
+  </script>
 </body>
+<style type="css">
+  .no_link {
+      text-decoration: none;
+    }
+  </style>
+
 </html>

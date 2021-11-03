@@ -1,0 +1,10 @@
+BEGIN:VCARD
+VERSION:2.1
+N;CHARSET=ISO-8859-1:Zeug;Alexander;;;
+FN;CHARSET=ISO-8859-1: Alexander Zeug
+ORG;CHARSET=ISO-8859-1:SG Hausham;Sparte Fußball
+TITLE;CHARSET=ISO-8859-1:Jugendleiter
+URL;type=WORK;CHARSET=ISO-8859-1:http://www.sghausham.de/
+EMAIL;CHARSET=ISO-8859-1;type=WORK;type=PREF:zeugalexander@gmail.com
+TEL;type=WORK;type=FAX;type=PREF:
+END:VCARD
